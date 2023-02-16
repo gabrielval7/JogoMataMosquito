@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Jogo mata mosquitos</title>
+	<script src="jogo.js"></script>
+	<link rel = "stylesheet" href="estilo.css">
+</head>
+<body onresize="ajustaTamanhoJogo()">
+	<div class="painel">
+		<div class="vidas">
+			<img id="v1" src="imagens/coracao_cheio.png" />
+			<img id="v2" src="imagens/coracao_cheio.png" />
+			<img id="v3" src="imagens/coracao_cheio.png" />
+		</div>
+		<div>
+			<br><br>
+			Tempo restante: <span id="cronometro"></span>
+		</div>
+	</div>
+	<script>
+		var nivel = window.location.search
+		nivel = nivel.replace("?", "")
+	
+		var criaMosquitoTempo = 1500
+
+		if(nivel == 'normal'){
+			//1500 milisegundos
+			criaMosquitoTempo = 1500
+		}else if(nivel == 'dificil'){
+			//1000 milisegundos
+			criaMosquitoTempo = 1000
+		}else if(nivel == 'chucknorris'){
+			//750 milisegundos
+			criaMosquitoTempo = 750
+		}
+		document.getElementById('cronometro').innerHTML = tempo
+
+		var criaMosquito = setInterval(function(){
+			posicaoRandomica()
+		}, criaMosquitoTempo)
+	</script>
+</body>
+</html>
